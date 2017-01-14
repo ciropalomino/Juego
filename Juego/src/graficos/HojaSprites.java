@@ -8,32 +8,32 @@ import javax.imageio.ImageIO;
 public class HojaSprites {
 	private final int ancho;
 	private final int alto;
-
-
 	public final int[] pixeles;
-	
-	
-	public HojaSprites (final String ruta, final int ancho, final int alto){
+
+	// colección de hojas de sprites
+	public static HojaSprites desierto = new HojaSprites("/texturas/desierto.png", 320, 320);
+	// fin de la coleccion
+
+	public HojaSprites(final String ruta, final int ancho, final int alto) {
 		this.ancho = ancho;
-		this.alto  = alto;
-		
-		pixeles = new int [ancho * alto];
-		
+		this.alto = alto;
+
+		pixeles = new int[ancho * alto];
+
 		BufferedImage imagen;
 		try {
 			imagen = ImageIO.read(HojaSprites.class.getResource(ruta));
-			imagen.getRGB(0, 0, ancho,alto,pixeles, 0, ancho);
+			imagen.getRGB(0, 0, ancho, alto, pixeles, 0, ancho);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public int getAncho() {
 		return ancho;
 	}
-
 
 	public int getAlto() {
 		return alto;
