@@ -34,9 +34,9 @@ public class Juego extends Canvas implements Runnable {
 
 	private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
 	private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
-
 	private static final ImageIcon icono = new ImageIcon(Juego.class.getResource("/icono/iconoVentana.png"));
-
+	
+	
 	private Juego() {
 		setPreferredSize(new Dimension(ANCHO, ALTO));
 
