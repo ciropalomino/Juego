@@ -51,6 +51,11 @@ public class Pantalla {
 			int posicionY = y + compensacionY;
 			for(int x = 0; x < cuadro.sprite.obtenLado(); x++){
 				int posicionX = x + compensacionX;
+				if(posicionX < 0 || posicionX > ancho || posicionY < 0 || posicionY > alto){
+					break;
+				}
+				
+				pixeles[posicionX + posicionY * ancho] = cuadro.sprite.pixeles[ x + y * cuadro.sprite.obtenLado() ];
 			}
 		}
 	}
