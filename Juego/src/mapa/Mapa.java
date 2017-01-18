@@ -3,15 +3,15 @@ package mapa;
 import graficos.Pantalla;
 
 public abstract class Mapa {
-	private int ancho;
-	private int alto;
+	protected int ancho;
+	protected int alto;
 
-	private int[] cuadro;
+	protected int[] cuadros;
 
 	public Mapa(int ancho, int alto) {
 		this.ancho = ancho;
 		this.alto = alto;
-		cuadro = new int[ancho * alto];
+		cuadros = new int[ancho * alto];
 		generarMapa();
 	}
 
@@ -19,7 +19,7 @@ public abstract class Mapa {
 		cargaMapa(ruta);
 	}
 
-	private void generarMapa() {
+	protected void generarMapa() {
 
 	}
 
