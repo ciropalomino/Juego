@@ -10,7 +10,7 @@ public class CuadroAsfalto extends Cuadro{
 	}
 	
 	public void mostrar(int x, int y, Pantalla pantalla){
-		
+		pantalla.mostraCuadro(x, y, this);
 	}
 
 }
