@@ -59,4 +59,12 @@ public class Pantalla {
 			}
 		}
 	}
+
+	public int obtenAncho() {
+		return ancho;
+	}
+
+	public int obtenAlto() {
+		return alto;
+	}
 }
