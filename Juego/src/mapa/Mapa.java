@@ -41,10 +41,13 @@ public abstract class Mapa {
 	}
 	
 	public Cuadro obtencuadro (final int x, final int y){
-		if(cuadros[x+y*ancho]==0){
+
+		switch (cuadros[x+y*ancho]){
+		case 0: 
 			return Cuadro.ASFALTO;
+		default: 
+			return null;
 		}
-		return null;
 	}
 
 }
