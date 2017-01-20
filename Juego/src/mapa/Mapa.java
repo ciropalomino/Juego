@@ -50,4 +50,12 @@ public abstract class Mapa {
 		}
 	}
 
+	public Cuadro obtenCuadro(final int x, final int y) {
+		if (cuadros[x + y * ancho] == 0) {
+			return Cuadro.ASFALTO;
+		}
+		return null;
+
+	}
+
 }
