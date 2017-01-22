@@ -3,7 +3,7 @@ package mapa.cuadro;
 import graficos.Pantalla;
 import graficos.Sprite;
 
-public abstract class Cuadro {
+public class Cuadro {
 	public int x;
 	public int y;
 
@@ -12,8 +12,8 @@ public abstract class Cuadro {
 	public static final int LADO = 32;
 
 	// coleccióon
-	public static final Cuadro VACIO = new CuadroVacio(Sprite.VACIO);
-	public static final Cuadro ASFALTO = new CuadroAsfalto(Sprite.ASFALTO);
+	public static final Cuadro VACIO = new Cuadro(Sprite.VACIO);
+	public static final Cuadro ASFALTO = new Cuadro(Sprite.ASFALTO);
 	// fin colección
 
 	public Cuadro(Sprite sprite) {
