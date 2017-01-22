@@ -9,6 +9,8 @@ public abstract class Cuadro {
 
 	public Sprite sprite;
 
+	public static final int LADO = 32;
+
 	// coleccióon
 	public static final Cuadro VACIO = new CuadroVacio(Sprite.VACIO);
 	public static final Cuadro ASFALTO = new CuadroAsfalto(Sprite.ASFALTO);
