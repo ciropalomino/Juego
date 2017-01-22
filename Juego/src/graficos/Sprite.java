@@ -23,7 +23,7 @@ public final class Sprite {
 	public static final Sprite PUERTA_INTERMEDIA_IZQUIERDA = new Sprite(32, 7, 1, HojaSprites.desierto);
 	public static final Sprite PUERTA_INFERIOR = new Sprite(32, 8, 1, HojaSprites.desierto);
 	public static final Sprite OXIDO = new Sprite(32, 9, 0, HojaSprites.desierto);
-	public static final Sprite PUERTA_SUPERIOR_CENTRAL = new Sprite(32, 2, 0, HojaSprites.desierto);
+	public static final Sprite PUERTA_SUPERIOR_CENTRAL = new Sprite(32, 8, 0, HojaSprites.desierto);
 
 	// fin de la colección
 
