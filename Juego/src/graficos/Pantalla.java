@@ -25,7 +25,7 @@ public class Pantalla {
 		}
 	}
 
-	public void mostraCuadro(int compensacionX, int compensacionY, Cuadro cuadro) {
+	public void mostrarCuadro(int compensacionX, int compensacionY, Cuadro cuadro) {
 		compensacionX -= diferenciaX;
 		compensacionY -= diferenciaY;
 		for (int y = 0; y < cuadro.sprite.obtenLado(); y++) {

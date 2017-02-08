@@ -31,11 +31,11 @@ public class HojaSprites {
 
 	}
 
-	public int getAncho() {
+	public int obtenAncho() {
 		return ancho;
 	}
 
-	public int getAlto() {
+	public int obtenAlto() {
 		return alto;
 	}
 
