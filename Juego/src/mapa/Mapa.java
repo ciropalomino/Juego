@@ -43,8 +43,7 @@ public abstract class Mapa {
 
 		for (int y = n; y < s; y++) {
 			for (int x = o; x < e; x++) {
-				// obtencuadro(x, y).mostrar(x, y, pantalla);
-
+				obtencuadro(x, y).mostrar(x, y, pantalla);
 			}
 		}
 	}
@@ -53,7 +52,7 @@ public abstract class Mapa {
 		if (x < 0 || y < 0 || x >= ancho || y >= alto) {
 			return Cuadro.VACIO;
 		}
-		switch (cuadros[x + y * ancho]) {
+		switch (cuadros[x + (y * ancho)]) {
 		case 0:
 			return Cuadro.ASFALTO;
 		case 1:

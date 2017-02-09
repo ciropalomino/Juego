@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import control.Teclado;
+import entes.criaturas.Jugador;
 import graficos.Pantalla;
 import mapa.Mapa;
 import mapa.MapaGenerado;
@@ -33,15 +34,13 @@ public class Juego extends Canvas implements Runnable {
 	private static int aps = 0;
 	private static int fps = 0;
 
-	private static int x = 0;
-	private static int y = 0;
-
 	private static JFrame ventana;
 	private static Thread thread;
 	private static Teclado teclado;
 	private static Pantalla pantalla;
 
 	private static Mapa mapa;
+	private static Jugador jugador;
 
 	private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
 	private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
@@ -51,9 +50,13 @@ public class Juego extends Canvas implements Runnable {
 		setPreferredSize(new Dimension(ANCHO, ALTO));
 
 		pantalla = new Pantalla(ANCHO, ALTO);
-		mapa = new MapaGenerado(128, 128);
 
 		teclado = new Teclado();
+
+		mapa = new MapaGenerado(128, 128);
+
+		jugador = new Jugador(teclado);
+
 		addKeyListener(teclado);
 
 		ventana = new JFrame(NOMBRE);
@@ -91,18 +94,8 @@ public class Juego extends Canvas implements Runnable {
 
 	private void actualizar() {
 		teclado.actualizar();
-		if (teclado.arriba) {
-			y--;
-		}
-		if (teclado.abajo) {
-			y++;
-		}
-		if (teclado.izquierda) {
-			x--;
-		}
-		if (teclado.derecha) {
-			x++;
-		}
+
+		jugador.actualizar();
 
 		if (teclado.salir) {
 			System.exit(0);
@@ -119,7 +112,7 @@ public class Juego extends Canvas implements Runnable {
 		}
 
 		pantalla.limpiar();
-		mapa.mostrar(x, y, pantalla);
+		mapa.mostrar(jugador.obtenerPosicionX(), jugador.obtenerPosicionY(), pantalla);
 
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
 
@@ -129,6 +122,8 @@ public class Juego extends Canvas implements Runnable {
 		g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);
 		g.drawString(CONTADOR_APS, 10, 20);
 		g.drawString(CONTADOR_FPS, 10, 35);
+		g.drawString("X: " + jugador.obtenerPosicionX(), 10, 50);
+		g.drawString("Y: " + jugador.obtenerPosicionY(), 10, 65);
 		g.dispose();
 
 		estrategia.show();

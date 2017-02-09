@@ -3,8 +3,8 @@ package entes;
 import mapa.Mapa;
 
 public abstract class Ente {
-	private int x;
-	private int y;
+	protected int x;
+	protected int y;
 
 	private boolean eliminado = false;
 
@@ -26,7 +26,7 @@ public abstract class Ente {
 		return x;
 	}
 
-	public int obptenerPosicionY() {
+	public int obtenerPosicionY() {
 		return y;
 	}
 
