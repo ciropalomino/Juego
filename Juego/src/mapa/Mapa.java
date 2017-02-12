@@ -48,6 +48,24 @@ public abstract class Mapa {
 		}
 	}
 
+	public Cuadro obtenerCuadroCatalogo(int posicion) {
+
+		if (cuadrosCatalogo == null) {
+			cuadrosCatalogo = new Cuadro[ancho * alto];
+
+			for (int y = 0; y < alto; y++) {
+				for (int x = 0; x < ancho; x++) {
+					cuadrosCatalogo[x + (y * ancho)] = obtencuadro(x, y);
+				}
+			}
+		}
+		return cuadrosCatalogo[posicion];
+	}
+
+	public int obtenerAncho() {
+		return ancho;
+	}
+
 	public Cuadro obtencuadro(final int x, final int y) {
 		if (x < 0 || y < 0 || x >= ancho || y >= alto) {
 			return Cuadro.VACIO;

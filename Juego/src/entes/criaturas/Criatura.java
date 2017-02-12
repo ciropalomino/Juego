@@ -31,12 +31,46 @@ public abstract class Criatura extends Ente {
 		}
 
 		if (!estaEliminado()) {
-			modificarPosicionX(desplazamientoX);
-			modificarPosicionY(desplazamientoY);
+			if (!enColicion(desplazamientoX, 0))
+				modificarPosicionX(desplazamientoX);
+			if (!enColicion(0, desplazamientoY))
+				modificarPosicionY(desplazamientoY);
+
 		}
 	}
 
-	private boolean enColicion() {
-		return false;
+	private boolean enColicion(int desplazamientoX, int desplazamientoY) {
+		boolean colision = false;
+
+		int posicionX = x + desplazamientoX;
+		int posicionY = y + desplazamientoY;
+
+		int margenIzquierdo = -6;
+		int margenDerecho = 18;
+		int margenSuperior = -4;
+		int margeInferior = 31;
+
+		int bordeIzquierdo = (posicionX + margenDerecho) / sprite.obtenLado();
+		int bordeDerecho = (posicionX + margenIzquierdo) / sprite.obtenLado();
+		int bordeSuperior = (posicionY + margeInferior) / sprite.obtenLado();
+		int bordeInferior = (posicionY + margenSuperior) / sprite.obtenLado();
+		if (mapa.obtenerCuadroCatalogo(bordeIzquierdo + (bordeSuperior * mapa.obtenerAncho())).esSolido()) {
+			colision = true;
+		}
+		if (mapa.obtenerCuadroCatalogo(bordeIzquierdo + (bordeInferior * mapa.obtenerAncho())).esSolido()) {
+			colision = true;
+		}
+		if (mapa.obtenerCuadroCatalogo(bordeDerecho + (bordeSuperior * mapa.obtenerAncho())).esSolido()) {
+			colision = true;
+		}
+		if (mapa.obtenerCuadroCatalogo(bordeDerecho + (bordeInferior * mapa.obtenerAncho())).esSolido()) {
+			colision = true;
+		}
+
+		return colision;
+	}
+
+	public Sprite obtenSprite() {
+		return sprite;
 	}
 }

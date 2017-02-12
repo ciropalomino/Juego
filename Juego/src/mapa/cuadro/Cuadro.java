@@ -4,15 +4,18 @@ import graficos.Pantalla;
 import graficos.Sprite;
 
 public class Cuadro {
+	private static final boolean SOLIDO = Boolean.TRUE;
 	public int x;
 	public int y;
 
 	public Sprite sprite;
 
+	private boolean solido;
+
 	public static final int LADO = 32;
 
 	// Colección de cuadros
-	public static final Cuadro VACIO = new Cuadro(Sprite.VACIO);
+	public static final Cuadro VACIO = new Cuadro(Sprite.VACIO, SOLIDO);
 	public static final Cuadro ASFALTO = new Cuadro(Sprite.ASFALTO);
 	public static final Cuadro ARENA = new Cuadro(Sprite.ARENA);
 	public static final Cuadro BORDE_CARRETERA_IZQUIERDO = new Cuadro(Sprite.BORDE_CARRETERA_IZQUIERDO);
@@ -44,14 +47,20 @@ public class Cuadro {
 
 	public Cuadro(Sprite sprite) {
 		this.sprite = sprite;
+		solido = false;
+	}
+
+	public Cuadro(Sprite sprite, boolean solido) {
+		this.sprite = sprite;
+		this.solido = solido;
 	}
 
 	public void mostrar(int x, int y, Pantalla pantalla) {
 		pantalla.mostrarCuadro(x << 5, y << 5, this);
 	}
 
-	public boolean solido() {
-		return false;
+	public boolean esSolido() {
+		return solido;
 	}
 
 }

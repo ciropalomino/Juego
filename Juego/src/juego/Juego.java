@@ -15,14 +15,15 @@ import javax.swing.JFrame;
 import control.Teclado;
 import entes.criaturas.Jugador;
 import graficos.Pantalla;
+import graficos.Sprite;
 import mapa.Mapa;
 import mapa.MapaGenerado;
 
 public class Juego extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 
-	private static final int ANCHO = 800;
-	private static final int ALTO = 600;
+	private static final int ANCHO = 600;
+	private static final int ALTO = 400;
 
 	private static volatile boolean enFuncionamiento = Boolean.TRUE;
 
@@ -53,9 +54,9 @@ public class Juego extends Canvas implements Runnable {
 
 		teclado = new Teclado();
 
-		mapa = new MapaGenerado(128, 128);
+		mapa = new MapaGenerado(400, 300);
 
-		jugador = new Jugador(teclado);
+		jugador = new Jugador(mapa, teclado, Sprite.ARRIBA0, 225, 225);
 
 		addKeyListener(teclado);
 
@@ -112,14 +113,16 @@ public class Juego extends Canvas implements Runnable {
 		}
 
 		pantalla.limpiar();
-		mapa.mostrar(jugador.obtenerPosicionX(), jugador.obtenerPosicionY(), pantalla);
+		mapa.mostrar(jugador.obtenerPosicionX() - (pantalla.obtenAncho() + jugador.obtenSprite().obtenLado()) / 2,
+				jugador.obtenerPosicionY() - (pantalla.obtenAlto() + jugador.obtenSprite().obtenLado()) / 2, pantalla);
+		jugador.mostrar(pantalla);
 
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
 
 		Graphics g = estrategia.getDrawGraphics();
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
-		g.setColor(Color.white);
-		g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);
+		g.setColor(Color.red);
+		// g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);
 		g.drawString(CONTADOR_APS, 10, 20);
 		g.drawString(CONTADOR_FPS, 10, 35);
 		g.drawString("X: " + jugador.obtenerPosicionX(), 10, 50);
